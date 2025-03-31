@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>İsimle Ders Kaydı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            margin-top: 25px;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+
+        .back-link,
+        .show-link {
+            display: block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 14px;
+        }
+
+        .back-link:hover,
+        .show-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Yeni Öğrenci ve Ders Kaydı</h2>
+
+        <form action="/students/register-by-name" method="post">
+            <label>Öğrenci Adı:</label>
+            <input type="text" name="studentName" placeholder="Öğrenci Adı" required>
+
+            <label>Ders Adı:</label>
+            <input type="text" name="courseName" placeholder="Ders Adı" required>
+
+            <button type="submit">Kaydet</button>
+        </form>
+
+        <div th:if="${message}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+
+        <a href="/students/form" class="back-link">← Geri Dön</a>
+        <a href="/students/enrollments" class="show-link">📋 Tüm Kayıtları Göster</a>
+    </div>
+</body>
+</html>
